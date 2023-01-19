@@ -1,4 +1,42 @@
 # How to setup GAP_SDK 3.9.1 for nano-drones
+
+## Prerequisites
+
+Opencv3.2. Unfortunately it is not ufficially supported anymore. But here's how to install it
+
+this is a repo that allows to do so: https://gist.github.com/syneart/3e6bb68de8b6390d2eb18bff67767dcb 
+To install execute the following
+
+```
+# wget -O - https://gist.githubusercontent.com/syneart/3e6bb68de8b6390d2eb18bff67767dcb/raw/OpenCV3.2withContrib.sh | bash
+```
+
+### Possible errors
+#### 1. CUDA
+```
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+CUDA_nppi_LIBRARY (ADVANCED)
+```
+Solution: bad version of cuda. i completely uninstalled cudadevtoolkit
+
+#### 2. LAPACKE missing
+
+```
+fatal error: LAPACKE_H_PATH-NOTFOUND/lapacke.h: No such file or directory
+#include "LAPACKE_H_PATH-NOTFOUND/lapacke.h"
+```
+found this solution working: https://github.com/YuvalNirkin/face_swap/issues/51
+```
+I needed to change the file pointer here
+nano ~/opencv-3.2.0/build/opencv_lapack.h
+
+changing line
+#include "LAPACKE_H_PATH-NOTFOUND/lapacke.h" 
+into
+#include "/usr/include/lapacke.h"
+```
+
 ## Minimal install
 ##############################################################################
 ##############################	MINIMAL	##############################
