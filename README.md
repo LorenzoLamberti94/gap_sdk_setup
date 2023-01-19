@@ -11,6 +11,11 @@ To install execute the following
 # wget -O - https://gist.githubusercontent.com/syneart/3e6bb68de8b6390d2eb18bff67767dcb/raw/OpenCV3.2withContrib.sh | bash
 ```
 
+#### check if installed:
+```
+ dpkg -l | grep libopencv
+```
+
 ### Possible errors
 #### 1. CUDA
 ```
